@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="../styles/home.css">
+    <title>IAR BBall scores</title>
+    <script type="text/javascript" >
+      setTimeout(function () {
+          window.location.reload(1);
+      }, 15000);
+    </script>
+</head>
+
+  <body>
+    <div class="navbar navbar-default" role="navigation">
+      <div class="container">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed dropdown-toggle" data-toggle="dropdown">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand visible-xs dropdown-toggle ng-binding" href="" data-toggle="dropdown">IAR BASKETBALL</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ngIf: !statusDefined -->
+  
+      <!-- ngIf: statusDefined --><div ng-if="statusDefined" class="row dark-title-container status-defined ng-scope">
+          <div class="col-md-12" id="sidebarLiveTitle">
+              <a href="" class="dark-title status-icon ng-binding">June 23</a>
+          </div>
+      </div><!-- end ngIf: statusDefined -->
+  
+      <section class="fixtures-container container-simple">
+          <ul class="custom-repeater">
+              <!-- ngRepeat: match in matches --><li ng-repeat="match in matches" ng-switch="hasScore(match)" class="ng-scope">
+  
+                  <a ui-sref="live-scores-details.match-facts({league: match.league.id, matchId: match.id})" href="/livescores/47/1988972/match-facts/">
+                      
+                      <div class="row">
+                          <div class="col-md-10 col-sm-10 col-xs-10 v-wrapper">
+                              <img class="team-logo-smaller" ng-src="http://images.fotmob.com/image_resources/logo/teamlogo/10260_small.png" alt="Manchester United" data-err-source="/static/assets/img/team_no_picture.png" src="http://images.fotmob.com/image_resources/logo/teamlogo/10260_small.png">
+                              <span class="v-center team-name ng-binding">
+                                  Manchester United
+                              </span>
+                          </div>
+  
+                          <div class="col-md-2 col-sm-2 col-xs-2 v-wrapper team-score">
+                              <!-- ngSwitchWhen: true --><span ng-switch-when="true" class="v-center ng-binding ng-scope">3</span>
+                              <!-- ngSwitchWhen: false -->
+                          </div>
+                      </div>
+  
+                      
+                      <div class="row">
+                          <div class="col-md-10 col-sm-10 col-xs-10 v-wrapper">
+                              <img class="team-logo-smaller" ng-src="http://images.fotmob.com/image_resources/logo/teamlogo/9825_small.png" alt="Arsenal" data-err-source="/static/assets/img/team_no_picture.png" src="http://images.fotmob.com/image_resources/logo/teamlogo/9825_small.png">
+                              <span class="v-center team-name ng-binding">
+                                  Arsenal
+                              </span>
+                          </div>
+  
+                          <div class="col-md-2 col-sm-2 col-xs-2 v-wrapper team-score">
+                              <!-- ngSwitchWhen: true --><span ng-switch-when="true" class="v-center ng-binding ng-scope">2</span>
+                              <!-- ngSwitchWhen: false -->
+                          </div>
+                      </div>
+  
+                      <div class="row">
+                          <div class="col-md-10 col-sm-10 col-xs-10">
+                              <!-- ngSwitchWhen: false -->
+                          </div>
+                          <div class="col-md-2 col-sm-2 col-xs-2">
+                              <!-- ngSwitchWhen: false -->
+                              <!-- ngSwitchWhen: true --><span ng-switch-when="true" class="match-time ng-binding ng-scope">FT</span>
+                          </div>
+                      </div>
+                  </a>
+              </li><!-- end ngRepeat: match in matches --><li ng-repeat="match in matches" ng-switch="hasScore(match)" class="ng-scope">
+  
+                  <a ui-sref="live-scores-details.match-facts({league: match.league.id, matchId: match.id})" href="/livescores/47/1988976/match-facts/">
+                      
+                      <div class="row">
+                          <div class="col-md-10 col-sm-10 col-xs-10 v-wrapper">
+                              <span class="v-center team-name ng-binding">
+                                  Tottenham Hotspur
+                              </span>
+                          </div>
+  
+                          <div class="col-md-2 col-sm-2 col-xs-2 v-wrapper team-score">
+                              <!-- ngSwitchWhen: true --><span ng-switch-when="true" class="v-center ng-binding ng-scope">2</span>
+                              <!-- ngSwitchWhen: false -->
+                          </div>
+                      </div>
+  
+                      
+                      <div class="row">
+                          <div class="col-md-10 col-sm-10 col-xs-10 v-wrapper">
+                              <span class="v-center team-name ng-binding">
+                                  Swansea City
+                              </span>
+                          </div>
+  
+                          <div class="col-md-2 col-sm-2 col-xs-2 v-wrapper team-score">
+                              <!-- ngSwitchWhen: true --><span ng-switch-when="true" class="v-center ng-binding ng-scope">1</span>
+                              <!-- ngSwitchWhen: false -->
+                          </div>
+                      </div>
+  
+                      <div class="row">
+                          <div class="col-md-10 col-sm-10 col-xs-10">
+                              <!-- ngSwitchWhen: false -->
+                          </div>
+                          <div class="col-md-2 col-sm-2 col-xs-2 bruh">
+                              <!-- ngSwitchWhen: false -->
+                              <!-- ngSwitchWhen: true --><span ng-switch-when="true" class="match-time ng-binding ng-scope">LIVE</span>
+                          </div>
+                      </div>
+                  </a>
+              </li><!-- end ngRepeat: match in matches -->
+              <% for (i = 0; i < form.length; i++) { %>
+                <%- form[i] %>
+              <% } %>
+  
+              <li class="see-more-footer more-footer-large">
+                  <a ui-sref="live-scores({status: current.status})" class="see-more" href="/?status=finished">See all matches</a>
+              </li>
+          </ul>
+      </section>
+  </div></matches-directive>
+      </div>
+  </div></div>
+  
+    <footer class="mainFooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <p class="copyright">
+                        © 2021 Shakeeb Shams - All Rights Reserved
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+      
+  
+  <div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;"></iframe><table cellspacing="0" cellpadding="0" class="gstl_50 gssb_c" style="width: 2px; display: none; top: 3px; position: absolute; left: -1px;"><tbody><tr><td class="gssb_f"></td><td class="gssb_e" style="width: 100%;"></td></tr></tbody></table>
+</body>
