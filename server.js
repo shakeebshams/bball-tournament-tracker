@@ -11,8 +11,54 @@ import GameDB from './schemas/Game.js'
 import cookieParser from 'cookie-parser'
 dotenv.config()
 
-let form = []
-let game_ids = ["co2u3hdou2h3odh2iu"]
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+let games = {
+    "co2u3hdou2h3odh2iu": {
+        team1: "grillmasters",
+        team2: "shawarma gang",
+        team1_score: 27,
+        team2_score: 35,
+        ended:  false,
+    },
+    "co2u3hdoudsfa2h3odh2iu": {
+        team1: "team pepsi",
+        team2: "some random team name",
+        team1_score: 22,
+        team2_score: 3315,
+        ended:  true,
+    },
+    "co2u3": {
+        team1: "yuck",
+        team2: "duck",
+        team1_score: 19,
+        team2_score: 3,
+        ended:  false,
+    }
+};
+let game_ids = ["co2u3hdou2h3odh2iu","co2u3hdoudsfa2h3odh2iu","co2u3"];
+
+/*
+game = 
+{
+    "3hgsd298h": 
+    {
+        team1: STRING
+        team2: STRING
+        team1_score: INT
+        team2_score: INT
+        ended: BOOLEAN
+    }
+    let team1 = post.team1;
+    let team2 = post.team2;
+    let team1_score = post.team1_score;
+    let team2_score = post.team2_score;
+    let ended = post.ended;
+}
+*/
+
 
 /*
 * Express server config
@@ -29,47 +75,55 @@ _server.use(express.static(path.join(__dirname ,'views/index.html')))
 _server.get('/styles/home.css', function(req, res) {
     res.sendFile(path.join(__dirname, '/styles/home.css'))
 })
+
+_server.get('/styles/style.css', function(req, res) {
+    res.sendFile(path.join(__dirname, '/styles/style.css'))
+})
 const server = _server.listen(port, function() {
     console.log("Web server listening on port: " + port)
 })
 
 
-_server.get('/', async function(req, res) {
-    await refresh()
-    res.render('home', {form: form})
+
+_server.get('/', function(req, res) {
+    let date = get_date();
+    let form = refresh();
+    res.render('home', {form: form, date: date});
 })
 
-async function refresh() {
+function get_date() {
+    let d = new Date();
+    let month = monthNames[d.getMonth()];
+    let day = d.getDate();
+    let date_string = month + ' ' + day;
+    return date_string; 
+}
+
+function refresh() {
+    let form = []
+    console.log(game_ids)
     game_ids.forEach(async function(id) {
-        await GameDB.findOne({match_id: id}, function(err, post){
-            if (err) {
-                console.log(err)
-            }
-            if (post !== null) {
-                add(post)
-            } else {
-                console.log("no match found")
-            }
-        })
+        console.log(id)
+        let game = games[id];
+        console.log(game)
+        let rendering_agent = add(game);
+        form.push(rendering_agent);
     })
+    return form
 }
 
 
-async function add(post) {
-    console.log(typeof post);
-    console.log(post.team1)
-    let yuh = JSON.stringify(post)
-    console.log(yuh.team1)
-    let team1 = post.team1
-    let team2 = post.team2
-    let team1_score = post.team1_score
-    let team2_score = post.team2_score
-    let ended = post.ended
-    let status
+function add(post) {
+    let team1 = post.team1;
+    let team2 = post.team2;
+    let team1_score = post.team1_score;
+    let team2_score = post.team2_score;
+    let ended = post.ended;
+    let status;
     if (ended) {
-        status = "FT"
+        status = "FT";
     } else {
-        status = "LIVE"
+        status = "LIVE";
     }
     let match = `
         <li ng-repeat="match in matches" ng-switch="hasScore(match)" class="ng-scope">
@@ -115,9 +169,17 @@ async function add(post) {
             </a>
         </li>
         `
-    console.log(match)
-    form.push(match)
+    return match;
 }
+
+_server.get('/sircut', function(req, res) {
+    res.render('create');
+})
+
+_server.get('create', function(req, res) {
+
+})
+
 
 
 
