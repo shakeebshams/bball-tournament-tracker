@@ -73,14 +73,22 @@ _server.use(express.json())
 _server.use(express.static(path.join(__dirname ,'views/index.html')))
 
 _server.get('/styles/home.css', function(req, res) {
-    res.sendFile(path.join(__dirname, '/styles/home.css'))
+    res.sendFile(path.join(__dirname, '/styles/home.css'));
 })
 
 _server.get('/styles/style.css', function(req, res) {
-    res.sendFile(path.join(__dirname, '/styles/style.css'))
+    res.sendFile(path.join(__dirname, '/styles/style.css'));
+})
+
+_server.get('/styles/score.css', function(req, res) {
+    res.sendFile(path.join(__dirname, '/styles/score.css'));
+})
+
+_server.get('/score.js', function (req, res) {
+    res.sendFile(path.join(__dirname, '/score.js'));
 })
 const server = _server.listen(port, function() {
-    console.log("Web server listening on port: " + port)
+    console.log("Web server listening on port: " + port);
 })
 
 
@@ -176,10 +184,27 @@ _server.get('/sircut', function(req, res) {
     res.render('create');
 })
 
-_server.get('create', function(req, res) {
-
+_server.post('/create', function(req, res) {
+    let game_id = nanoid();
+    let team1_name = req.body.team1;
+    let team2_name = req.body.team2;
+    games[game_id] = {
+        team1: team1_name,
+        team2: team2_name,
+        team1_score: 0,
+        team2_score: 0,
+        ended: false
+    }
+    game_ids.push(game_id);
+    res.redirect(301, '/play?game_id=' + game_id);
 })
 
-
-
-
+_server.get('/play', function(req, res) {
+    let game_id = req.query.game_id;
+    let game_status = games[game_id];
+    let team1 = game_status.team1;
+    let team2 = game_status.team2;
+    let team1_score = game_status.team1_score;
+    let team2_score = game_status.team2_score;
+    res.render('play', {team1: team1, team2: team2, team1_score: team1_score, team2_score: team2_score, game_id: game_id});
+})
