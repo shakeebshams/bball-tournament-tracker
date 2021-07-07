@@ -155,15 +155,3 @@ resetButton.addEventListener("click", async function(){
 	}
 });
 */
-
-/*
-numInput.addEventListener("change", function() {
-	if (numInput.value >= 1) {
-		//winningScore = Number(numInput.value);
-		reset();
-	}
-	else {
-		alert("Please enter a positive number");
-	}
-})
-*/
