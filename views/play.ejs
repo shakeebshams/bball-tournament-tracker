@@ -16,10 +16,15 @@
             <button id="p2-two">+2</button>
             <button id="p2-three">+3</button>
             <button id="p2-minus">-</button>
-            <p id="winner-display"></p>
-            <p>yuh</p>
+            <p id="winner-display" hidden> <%- game_id %> </p>
+            <p></p>
             <!-- <input type="number" value="5" class="text-center"> -->
-            <button id="reset" class="text-center">END GAME</button>
+            <form action="/complete" method="post">
+                <input type="text" name="team1_score" id="team1_form_score" hidden value=0 >
+                <input type="text" name="team2_score" id="team2_form_score" hidden value=0 >
+                <input type="text" name="game_id" id="game_id" hidden value=<%- game_id %> >
+                <button id="reset" class="text-center" name="foo">END GAME</button>
+            </form>
         </div>
         <script type="text/javascript" src="../score.js"></script>
     </body>

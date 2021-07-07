@@ -199,6 +199,19 @@ _server.post('/create', function(req, res) {
     res.redirect(301, '/play?game_id=' + game_id);
 })
 
+_server.post('/complete', function(req, res) {
+    console.log(req.body)
+    
+    let game_id = req.body.game_id
+    let team1_score = req.body.team1_score;
+    let team2_score = req.body.team2_score;
+    games[game_id].team1_score = team1_score;
+    games[game_id].team2_score = team2_score;
+    games[game_id].ended = true
+    
+    res.redirect(301, '/');
+})
+
 _server.get('/play', function(req, res) {
     let game_id = req.query.game_id;
     let game_status = games[game_id];

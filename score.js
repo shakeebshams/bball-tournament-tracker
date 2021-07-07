@@ -9,8 +9,9 @@ var p2MinusButton = document.querySelector("#p2-minus");
 var resetButton = document.querySelector("#reset");
 var p1Display = document.querySelector("#p1-display");
 var p2Display = document.querySelector("#p2-display");
-//var numInput = document.querySelector("input"); //or input[type="number"] if mult inputs
-var winnerText = document.querySelector("#winner-display")
+var p1post = document.querySelector("#team1_form_score");
+var p2post = document.querySelector("#team2_form_score");
+var game_id = document.querySelector("#winner-display");
 //var winningScore = Number(numInput.value);
 var p1Score = 0;
 var p2Score = 0;
@@ -27,6 +28,7 @@ p1AddButton.addEventListener("click", function(){
 		}
         */
 		p1Display.textContent = p1Score;
+		p1post.value = p1Score;
 	}
 })
 
@@ -41,6 +43,7 @@ p1TwoButton.addEventListener("click", function(){
 		}
         */
 		p1Display.textContent = p1Score;
+		p1post.value = p1Score;
 	}
 })
 
@@ -55,6 +58,7 @@ p1ThreeButton.addEventListener("click", function(){
 		}
         */
 		p1Display.textContent = p1Score;
+		p1post.value = p1Score;
 	}
 })
 
@@ -62,6 +66,7 @@ p1MinusButton.addEventListener("click", function(){
 	if (!gameOver && p1Score > 0) { 
 		p1Score--;
 		p1Display.textContent = p1Score;
+		p1post.value = p1Score;
 	}
 	if (p1Score < 0) {
 		alert("You cannot make score a negative number");
@@ -84,11 +89,13 @@ p2AddButton.addEventListener("click", function(){
 		}
         */
 		p2Display.textContent = p2Score;
+		p2post.value = p2Score;
 	}
 })
 
 p2TwoButton.addEventListener("click", function(){
 	if (!gameOver) { 
+		p2Score = p2Score + 3;
         /*
 		p2Score = p2Score + 2;
 		if (p1Score === winningScore) {
@@ -97,7 +104,8 @@ p2TwoButton.addEventListener("click", function(){
 			winnerText.textContent = "Player 2 wins!"
 		}
         */
-		p1Display.textContent = p1Score;
+		p2Display.textContent = p2Score;
+		p2post.value = p2Score;
 	}
 })
 
@@ -111,7 +119,8 @@ p2ThreeButton.addEventListener("click", function(){
 			winnerText.textContent = "Player 3 wins!"
 		}
         */
-		p1Display.textContent = p1Score;
+		p2Display.textContent = p2Score;
+		p2post.value = p2Score;
 	}
 })
 
@@ -119,27 +128,33 @@ p2MinusButton.addEventListener("click", function(){
 	if (!gameOver && p2Score > 0) { 
 		p2Score--;
 		p2Display.textContent = p2Score;
+		p2post.value = p2Score;
 	}
 	if (p2Score <= 0) {
 		alert("You cannot make score a negative number");
 	}
 })
 
-
-resetButton.addEventListener("click", function(){
-	reset();
-})
-
-function reset() {
-	p1Score = 0; 
-	p2Score = 0;
-	p1Display.textContent = 0;
-	p2Display.textContent = 0;
-	winnerText.textContent = "";
-	p1Display.classList.remove("winner");
-	p2Display.classList.remove("winner");
-	gameOver = false;
-}
+/*
+resetButton.addEventListener("click", async function(){
+	var payload = {
+		p1score: p1Score,
+		p2Score: p2Score,
+		game_id: game_id
+	};
+	var data = new FormData();
+	data.append( "json", JSON.stringify( payload ) );
+	try {     
+		const response = await fetch('/complete', {
+		  method: 'post',
+		  body: data
+		});
+		console.log('Completed!', response);
+	} catch(err) {
+		console.error(`Error: ${err}`);
+	}
+});
+*/
 
 /*
 numInput.addEventListener("change", function() {
