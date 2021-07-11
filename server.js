@@ -217,7 +217,7 @@ _server.post('/complete', function(req, res) {
     games[game_id].team1_fouls = team1_fouls;
     games[game_id].team2_fouls = team2_fouls;
     games[game_id].ended = true
-    console.log(games)
+    console.log(games);
     res.redirect(301, '/');
 })
 

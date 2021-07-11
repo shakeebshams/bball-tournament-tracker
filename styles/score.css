@@ -75,6 +75,7 @@ h2 { /*score*/
 	width: 200px;
 	border-radius: 4px;
 	border: 1px solid #EDEDED;
+	font-size: xx-large;
 }
 
 #winner-display {
