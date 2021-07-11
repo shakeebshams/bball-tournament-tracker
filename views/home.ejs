@@ -39,97 +39,13 @@
   
       <section class="fixtures-container container-simple">
           <ul class="custom-repeater">
-              <!-- ngRepeat: match in matches --><li ng-repeat="match in matches" ng-switch="hasScore(match)" class="ng-scope">
-  
-                  <a ui-sref="live-scores-details.match-facts({league: match.league.id, matchId: match.id})" href="/livescores/47/1988972/match-facts/">
-                      
-                      <div class="row">
-                          <div class="col-md-10 col-sm-10 col-xs-10 v-wrapper">
-                              <img class="team-logo-smaller" ng-src="http://images.fotmob.com/image_resources/logo/teamlogo/10260_small.png" alt="Manchester United" data-err-source="/static/assets/img/team_no_picture.png" src="http://images.fotmob.com/image_resources/logo/teamlogo/10260_small.png">
-                              <span class="v-center team-name ng-binding">
-                                  IAR ballers
-                              </span>
-                          </div>
-  
-                          <div class="col-md-2 col-sm-2 col-xs-2 v-wrapper team-score">
-                              <!-- ngSwitchWhen: true --><span ng-switch-when="true" class="v-center ng-binding ng-scope">33</span>
-                              <!-- ngSwitchWhen: false -->
-                          </div>
-                      </div>
-  
-                      
-                      <div class="row">
-                          <div class="col-md-10 col-sm-10 col-xs-10 v-wrapper">
-                              <img class="team-logo-smaller" ng-src="http://images.fotmob.com/image_resources/logo/teamlogo/9825_small.png" alt="Arsenal" data-err-source="/static/assets/img/team_no_picture.png" src="http://images.fotmob.com/image_resources/logo/teamlogo/9825_small.png">
-                              <span class="v-center team-name ng-binding">
-                                  IAR Hoopers
-                              </span>
-                          </div>
-  
-                          <div class="col-md-2 col-sm-2 col-xs-2 v-wrapper team-score">
-                              <!-- ngSwitchWhen: true --><span ng-switch-when="true" class="v-center ng-binding ng-scope">45</span>
-                              <!-- ngSwitchWhen: false -->
-                          </div>
-                      </div>
-  
-                      <div class="row">
-                          <div class="col-md-10 col-sm-10 col-xs-10">
-                              <!-- ngSwitchWhen: false -->
-                          </div>
-                          <div class="col-md-2 col-sm-2 col-xs-2">
-                              <!-- ngSwitchWhen: false -->
-                              <!-- ngSwitchWhen: true --><span ng-switch-when="true" class="match-time ng-binding ng-scope">FT</span>
-                          </div>
-                      </div>
-                  </a>
-              </li><!-- end ngRepeat: match in matches --><li ng-repeat="match in matches" ng-switch="hasScore(match)" class="ng-scope">
-  
-                  <a ui-sref="live-scores-details.match-facts({league: match.league.id, matchId: match.id})" href="/livescores/47/1988976/match-facts/">
-                      
-                      <div class="row">
-                          <div class="col-md-10 col-sm-10 col-xs-10 v-wrapper">
-                              <span class="v-center team-name ng-binding">
-                                  Raleigh dunks
-                              </span>
-                          </div>
-  
-                          <div class="col-md-2 col-sm-2 col-xs-2 v-wrapper team-score">
-                              <!-- ngSwitchWhen: true --><span ng-switch-when="true" class="v-center ng-binding ng-scope">222</span>
-                              <!-- ngSwitchWhen: false -->
-                          </div>
-                      </div>
-  
-                      
-                      <div class="row">
-                          <div class="col-md-10 col-sm-10 col-xs-10 v-wrapper">
-                              <span class="v-center team-name ng-binding">
-                                  Atlanta Hawks
-                              </span>
-                          </div>
-  
-                          <div class="col-md-2 col-sm-2 col-xs-2 v-wrapper team-score">
-                              <!-- ngSwitchWhen: true --><span ng-switch-when="true" class="v-center ng-binding ng-scope">77</span>
-                              <!-- ngSwitchWhen: false -->
-                          </div>
-                      </div>
-  
-                      <div class="row">
-                          <div class="col-md-10 col-sm-10 col-xs-10">
-                              <!-- ngSwitchWhen: false -->
-                          </div>
-                          <div class="col-md-2 col-sm-2 col-xs-2 bruh">
-                              <!-- ngSwitchWhen: false -->
-                              <!-- ngSwitchWhen: true --><span ng-switch-when="true" class="match-time ng-binding ng-scope">LIVE</span>
-                          </div>
-                      </div>
-                  </a>
-              </li><!-- end ngRepeat: match in matches -->
+              <!-- ngRepeat: match in matches --><!-- end ngRepeat: match in matches -->
               <% for (i = 0; i < form.length; i++) { %>
                 <%- form[i] %>
               <% } %>
   
               <li class="see-more-footer more-footer-large">
-                  <a ui-sref="live-scores({status: current.status})" class="see-more" href="/?status=finished">See all matches</a>
+                  
               </li>
           </ul>
       </section>
