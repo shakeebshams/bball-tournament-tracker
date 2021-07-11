@@ -54,17 +54,28 @@ h2 { /*score*/
 	background-color: #2C3E50;
 	color: #EDEDED;
 	margin: 5px;
-	height: 25px;
-	width: 25px;
+	height: 100px;
+	width: 75px;
 	border-radius: 4px;
 	border: 1px solid #EDEDED;
+	font-size: xx-large;
 }
 
 #p1-minus {
 	margin-right: 70px;
 }
 
-
+#foul1, #foul2, #rebound1, #rebound2, #timeout1, #timeout2 {
+	position: relative;
+	top: -100px;
+	background-color: #2C3E50;
+	color: #EDEDED;
+	margin: 5px;
+	height: 200px;
+	width: 200px;
+	border-radius: 4px;
+	border: 1px solid #EDEDED;
+}
 
 #winner-display {
 	margin-top: -70px;

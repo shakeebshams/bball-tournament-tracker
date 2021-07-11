@@ -22,6 +22,8 @@ let games = {
         team1_score: 27,
         team2_score: 35,
         ended:  false,
+        team1_fouls: '2',
+        team2_fouls: '5'
     },
     "co2u3hdoudsfa2h3odh2iu": {
         team1: "team pepsi",
@@ -29,6 +31,8 @@ let games = {
         team1_score: 22,
         team2_score: 3315,
         ended:  true,
+        team1_fouls: '10',
+        team2_fouls: '8'
     },
     "co2u3": {
         team1: "yuck",
@@ -36,9 +40,11 @@ let games = {
         team1_score: 19,
         team2_score: 3,
         ended:  false,
+        team1_fouls: '1',
+        team2_fouls: '1'
     }
 };
-let game_ids = ["co2u3hdou2h3odh2iu","co2u3hdoudsfa2h3odh2iu","co2u3"];
+let game_ids = [];
 
 /*
 game = 
@@ -109,11 +115,8 @@ function get_date() {
 
 function refresh() {
     let form = []
-    console.log(game_ids)
     game_ids.forEach(async function(id) {
-        console.log(id)
         let game = games[id];
-        console.log(game)
         let rendering_agent = add(game);
         form.push(rendering_agent);
     })
@@ -126,6 +129,8 @@ function add(post) {
     let team2 = post.team2;
     let team1_score = post.team1_score;
     let team2_score = post.team2_score;
+    let team1_fouls = post.team1_fouls;
+    let team2_fouls = post.team2_fouls;
     let ended = post.ended;
     let status;
     if (ended) {
@@ -136,12 +141,11 @@ function add(post) {
     let match = `
         <li ng-repeat="match in matches" ng-switch="hasScore(match)" class="ng-scope">
         
-            <a ui-sref="live-scores-details.match-facts({league: match.league.id, matchId: match.id})" href="/livescores/47/1988976/match-facts/">
-                
+            <a>
                 <div class="row">
                     <div class="col-md-10 col-sm-10 col-xs-10 v-wrapper">
                         <span class="v-center team-name ng-binding">
-                            ${team1}
+                            ${team1} - fouls: ${team1_fouls}
                         </span>
                     </div>
 
@@ -149,13 +153,14 @@ function add(post) {
                         <!-- ngSwitchWhen: true --><span ng-switch-when="true" class="v-center ng-binding ng-scope">${team1_score}</span>
                         <!-- ngSwitchWhen: false -->
                     </div>
+                    
                 </div>
 
                 
                 <div class="row">
                     <div class="col-md-10 col-sm-10 col-xs-10 v-wrapper">
                         <span class="v-center team-name ng-binding">
-                            ${team2}
+                            ${team2} - fouls: ${team2_fouls}
                         </span>
                     </div>
 
@@ -205,10 +210,14 @@ _server.post('/complete', function(req, res) {
     let game_id = req.body.game_id
     let team1_score = req.body.team1_score;
     let team2_score = req.body.team2_score;
+    let team1_fouls = req.body.team1_fouls;
+    let team2_fouls = req.body.team2_fouls;
     games[game_id].team1_score = team1_score;
     games[game_id].team2_score = team2_score;
+    games[game_id].team1_fouls = team1_fouls;
+    games[game_id].team2_fouls = team2_fouls;
     games[game_id].ended = true
-    
+    console.log(games)
     res.redirect(301, '/');
 })
 

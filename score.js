@@ -12,10 +12,62 @@ var p2Display = document.querySelector("#p2-display");
 var p1post = document.querySelector("#team1_form_score");
 var p2post = document.querySelector("#team2_form_score");
 var game_id = document.querySelector("#winner-display");
+var p1postfouls = document.querySelector("#team1_form_fouls");
+var p2postfouls = document.querySelector("#team2_form_fouls");
+var foul1 = document.querySelector("#foul1");
+var foul2 = document.querySelector("#foul2");
+var rebound1 = document.querySelector("#rebound1");
+var rebound2 = document.querySelector("#rebound2");
+var timeout1 = document.querySelector("#timeout1");
+var timeout2 = document.querySelector("#timeout2");
 //var winningScore = Number(numInput.value);
 var p1Score = 0;
 var p2Score = 0;
 var gameOver = false;
+var foul1_score = 0;
+var foul2_score = 0;
+var rebound1_score = 0;
+var rebound2_score = 0;
+var timeout1_score = 0;
+var timeout2_score = 0;
+
+foul1.addEventListener("click", function(){
+	foul1_score  = foul1_score + 1;
+	var text = "Team 1 foul: " + foul1_score.toString();
+	foul1.textContent = text;
+	p1postfouls.value = foul1_score;
+})
+
+foul2.addEventListener("click", function(){
+	foul2_score  = foul2_score + 1;
+	var text = "Team 2 foul: " + foul2_score.toString();
+	foul2.textContent = text;
+	p2postfouls.value = foul2_score;
+})
+
+rebound1.addEventListener("click", function(){
+	rebound1_score  = rebound1_score + 1;
+	var text = "Team 1 rebound: " + rebound1_score.toString();
+	rebound1.textContent = text;
+})
+
+rebound2.addEventListener("click", function(){
+	rebound2_score  = rebound2_score + 1;
+	var text = "Team 2 rebound: " + rebound2_score.toString();
+	rebound2.textContent = text;
+})
+
+timeout1.addEventListener("click", function(){
+	timeout1_score  = timeout1_score + 1;
+	var text = "Team 1 timeouts: " + timeout1_score.toString();
+	timeout1.textContent = text;
+})
+
+timeout2.addEventListener("click", function(){
+	timeout2_score  = timeout2_score + 1;
+	var text = "Team 2 timeouts: " + timeout2_score.toString();
+	timeout2.textContent = text;
+})
 
 p1AddButton.addEventListener("click", function(){
 	if (!gameOver) { 
@@ -95,7 +147,7 @@ p2AddButton.addEventListener("click", function(){
 
 p2TwoButton.addEventListener("click", function(){
 	if (!gameOver) { 
-		p2Score = p2Score + 3;
+		p2Score = p2Score + 2;
         /*
 		p2Score = p2Score + 2;
 		if (p1Score === winningScore) {

@@ -17,11 +17,26 @@
             <button id="p2-three">+3</button>
             <button id="p2-minus">-</button>
             <p id="winner-display" hidden> <%- game_id %> </p>
+            
             <p></p>
+            <div class="yug">
+                <button id="foul1">Team 1 foul: 0</button>
+                <button id="foul2">Team 2 foul: 0</button>
+            </div>
+            <div class="yug">
+                <button id="rebound1">Team 1 rebounds: 0</button>
+                <button id="rebound2">Team 2 rebounds: 0</button>
+            </div>
+            <div class="yug">
+                <button id="timeout1">Team 1 timeouts: 0</button>
+                <button id="timeout2">Team 2 timeouts: 0</button>
+            </div>
             <!-- <input type="number" value="5" class="text-center"> -->
             <form action="/complete" method="post">
                 <input type="text" name="team1_score" id="team1_form_score" hidden value=0 >
                 <input type="text" name="team2_score" id="team2_form_score" hidden value=0 >
+                <input type="text" name="team1_fouls" id="team1_form_fouls" hidden value=0 >
+                <input type="text" name="team2_fouls" id="team2_form_fouls" hidden value=0 >
                 <input type="text" name="game_id" id="game_id" hidden value=<%- game_id %> >
                 <button id="reset" class="text-center" name="foo">END GAME</button>
             </form>
